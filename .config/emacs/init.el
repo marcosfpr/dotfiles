@@ -1,19 +1,17 @@
- ;;; init.el -*- lexical-binding: t; -*-
+;;; init.el -*- lexical-binding: t; -*-
 
 ;; Author: marcosfpr
 ;; My Custom Emacs Settings
 
 ;;; General
 
+;; Load Path
+(add-to-list 'load-path "~/.config/emacs/custom")
+
 ;; Font
 (set-face-attribute 'default nil :font "Iosevka-13")
 (set-frame-font "Iosevka-13" nil t)
 
-;; Load Path
-(add-to-list 'load-path "~/.config/emacs/custom")
-
-;; Theme
-(load-theme 'challenger-deep)
 
 ;; Remove the start screen, use dashboard instead
 (setq inhibit-startup-screen t)
@@ -43,7 +41,7 @@
 ;; disable for specific buffers
 (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
 
-
+;; line numbers
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode 1)))
 (add-hook 'text-mode-hook (lambda () (display-line-numbers-mode 1)))
 (add-hook 'protobuf-mode-hook (lambda () (display-line-numbers-mode 1)))
@@ -231,28 +229,46 @@
   (setq dashboard-center-content t)
   (setq dashboard-set-footer nil)
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((projects . 5)
-			  (recents . 5)))
+  (setq dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
 ;; LSP
 
 (use-package lsp-mode
   :init
-  (setq lsp-keymap-prefix "SPC l")
+  (setq lsp-keymap-prefix "C-SPC")
   :hook
   (rust-mode . lsp)
   :config
-  (setq lsp-rust-analyzer-server-display-inlay-hints t)
+  (setq lsp-enable-which-key-integration t)
   (setq lsp-enable-snippet nil)
   (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-rust-analyzer-cargo-watch-command "clippy")
   (add-to-list 'lsp-file-watch-ignored "[/\\\\]data$")
   (add-to-list 'lsp-file-watch-ignored "[/\\\\].git$")
   (add-to-list 'lsp-file-watch-ignored "[/\\\\].submodules$")
+  :custom
+  ;; what to use when checking on-save. "check" is default, I prefer clippy
+  (lsp-eldoc-render-all t)
+  (lsp-idle-delay 0.6)
+  ;; This controls the overlays that display type and other hints inline. Enable
+  ;; / disable as you prefer. Well require a `lsp-workspace-restart' to have an
+  ;; effect on open projects.
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
+  (lsp-rust-analyzer-display-chaining-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil)
+  (lsp-rust-analyzer-display-closure-return-type-hints t)
+  (lsp-rust-analyzer-display-parameter-hints nil)
+  (lsp-rust-analyzer-display-reborrow-hints nil)
  )
 
-(use-package lsp-ui)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+    (setq lsp-ui-sideline-ignore-duplicate t)
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+ )
 
 (use-package lsp-ivy)
 
@@ -276,6 +292,10 @@
   :diminish flycheck-mode
   :config
   (flycheck-mode 1))
+
+;; (with-eval-after-load 'flycheck
+;; (require 'flycheck-inline)
+;;   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 
 (use-package rainbow-delimiters
   :config
@@ -304,6 +324,7 @@
 
 (use-package yasnippet-snippets)
 
+;; Rust
 (use-package rustic
   :mode ("\\.rs$" . rustic-mode)
   :ensure
@@ -322,6 +343,22 @@
   (setq rustic-format-display-method 'ignore)
   (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
 
+
+(setq lsp-rust-analyzer-server-display-inlay-hints t)
+(setq lsp-rust-analyzer-cargo-watch-enable t)
+(setq lsp-rust-analyzer-check-all-targets t)
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
+(setq lsp-rust-analyzer-cargo-watch-args
+   ["--"
+    "-Wclippy::pedantic"
+    "-Wclippy::nursery"
+    "-Wclippy::unwrap_used"
+    "-Wclippy::expect_used"
+    "-Wclippy::all"
+    "-Wclippy::style"
+    "-Wclippy::must_use_candidate"
+    "-Wclippy::missing_const_for_fn"])
+
 (defun rk/rustic-mode-hook ()
   ;; so that run C-c C-c C-r works without having to confirm, but don't try to
   ;; save rust buffers that are not file visiting. Once
@@ -331,17 +368,7 @@
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
-
-(push 'rustic-clippy flycheck-checkers)
-
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))
-
 ;; Treesitter
-
 (use-package tree-sitter
   :straight (tree-sitter :type git
                          :host github
@@ -362,8 +389,8 @@
 
 (use-package magit
   :config
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x M-g") 'magit-dispatch))
+  (global-set-key (kbd "C-x g s") 'magit-status)
+  (global-set-key (kbd "C-x g d") 'magit-dispatch))
 
 (use-package forge
   :after magit
@@ -435,6 +462,7 @@
   ; Wrap list around
   (setq company-selection-wrap-around t))
 
+
 ;;; Projectile
 (use-package projectile
   :diminish
@@ -446,6 +474,39 @@
   (setq projectile-switch-project-action 'projectile-dired)
   (setq projectile-git-submodule-command nil)
   :bind (("C-c p f" . projectile-find-file)))
+
+;; Themes
+(setq custom-safe-themes t)   ; Treat all themes as safe
+
+(use-package challenger-deep-theme
+  :ensure t)
+(load-theme 'challenger-deep)
+
+;;; Terminal
+(use-package vterm
+  :init
+  (setq vterm-always-compile-module t)
+  :config
+  (setq vterm-shell (executable-find "zsh"))
+  (setq vterm-max-scrollback 100000)
+  (setq vterm-kill-buffer-on-exit t)
+  (setq vterm-buffer-name-string "vterm %s"))
+
+(use-package multi-vterm
+  :bind (("C-c t" . multi-vterm-project)))
+
+(use-package vterm-toggle
+  :bind (("C-x w" . vterm-toggle-cd))
+  :config
+  (setq vterm-toggle-fullscreen-p nil)
+  (setq vterm-toggle-scope 'project)
+  (setq vterm-toggle-project-root t)
+  (setq vterm-toggle-reset-window-configration-after-exit t)
+  (add-to-list 'display-buffer-alist
+	       '("^v?term.*"
+		 (display-buffer-reuse-window display-buffer-at-bottom)
+		 (reusable-frames . visible)
+		 (window-height . 0.3))))
 
 
 ;; Bindings
@@ -469,6 +530,9 @@
     )))
 )
 
+
+(evil-define-minor-mode-key 'normal lsp-mode (kbd "SPC l") lsp-command-map)
+
 (define-key evil-visual-state-map (kbd "SPC >") 'tab-region)
 (define-key evil-visual-state-map (kbd "SPC <") 'untab-region)
 
@@ -479,6 +543,15 @@
 (define-key evil-visual-state-map (kbd "K") 'drag-stuff-up)
 (define-key evil-visual-state-map (kbd "J") 'drag-stuff-down)
 
+(define-key evil-normal-state-map (kbd "SPC t") 'vterm-toggle-cd)
+
+(define-key evil-normal-state-map (kbd "SPC u") 'lsp-ui-menu)
+(define-key evil-normal-state-map (kbd "SPC f r") 'lsp-find-references)
+(define-key evil-normal-state-map (kbd "SPC a") 'lsp-execute-code-action)
+(define-key evil-normal-state-map (kbd "SPC r") 'lsp-rename)
+(define-key evil-normal-state-map (kbd "SPC w r") 'lsp-workspace-restart)
+(define-key evil-normal-state-map (kbd "SPC w s") 'lsp-workspace-shutdown)
+(define-key evil-normal-state-map (kbd "SPC w l s") 'lsp-rust-analyzer-status)
 
 
 (custom-set-variables
@@ -486,13 +559,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("ed5afe11def738a452af6d1070faaa98a3e32e5a22c179e4e7c4c40ffff93478" "80214de566132bf2c844b9dee3ec0599f65c5a1f2d6ff21a2c8309e6e70f9242" "a0997c8cd72b848c675e66531265b68845cfdb222b32762ac8773c1dc957d10a" "18cf5d20a45ea1dff2e2ffd6fbcd15082f9aa9705011a3929e77129a971d1cb3" "c7c8e1670866772a055b0577027095b933057ed11ebdcccf44bae7e3756eacc0" "f5661fd54b1e60a4ae373850447efc4158c23b1c7c9d65aa1295a606278da0f8" "7809c67a87ab1c4fc5f4df85676c52a58f7503057d6c6a5b5afb20a76fb82926" "f149d9986497e8877e0bd1981d1bef8c8a6d35be7d82cba193ad7e46f0989f6a" "718dbb82a095087abd46d0e082c0c5774b8eda47719aae62437c38d00a0c3484" default))
  '(package-selected-packages
-   '(prettier dap-mode lsp-ivy lsp-ui lsp-mode diff-hl forge sqlite3 treemacs-evil treemacs dashboard general ivy minibuffer-line telephone-line drag-stuff which-key exec-path-from-shell catppuccin-theme zenburn-theme material-theme faff-theme fleetish-theme evil-collection evil undo-fu)))
+   '(prettier dap-mode lsp-ivy lsp-ui lsp-mode diff-hl forge sqlite3 treemacs-evil treemacs dashboard general ivy minibuffer-line telephone-line drag-stuff which-key exec-path-from-shell catppuccin-theme zenburn-theme material-theme faff-theme fleetish-theme evil-collection evil undo-fu))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ ))
