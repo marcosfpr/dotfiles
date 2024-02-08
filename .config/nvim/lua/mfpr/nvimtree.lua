@@ -10,17 +10,21 @@ nvim_tree.setup({
 	hijack_cursor = false,
 	update_cwd = true,
 	renderer = {
+		highlight_git = true,
 		icons = {
+			show = {
+				git = true,
+			},
 			glyphs = {
 				default = "",
 				symlink = "",
 				git = {
-					unstaged = "◌",
-					staged = "●",
+					unstaged = "",
+					staged = "",
 					unmerged = "",
 					renamed = "",
 					deleted = "",
-					untracked = "◌",
+					untracked = "",
 					ignored = "",
 				},
 				folder = {
@@ -31,7 +35,7 @@ nvim_tree.setup({
 					symlink = "",
 				},
 			},
-		},
+		}
 	},
 	diagnostics = {
 		enable = true,

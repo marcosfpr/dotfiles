@@ -3,7 +3,7 @@ local rt = require("rust-tools")
 local opts = {
 
   tools = {
-    executor = require("rust-tools.executors").toggleterm,
+    executor = require("rust-tools.executors").termopen,
     on_initialized = nil,
     reload_workspace_from_cargo_toml = true,
     inlay_hints = {
@@ -18,6 +18,9 @@ local opts = {
       right_align_padding = 7,
       highlight = "Comment",
     },
+    hover_actions = {
+      auto_focus = true,
+    }
   },
 
   -- all the opts to send to nvim-lspconfig
@@ -32,14 +35,14 @@ local opts = {
       -- Hover actions
       vim.keymap.set(
         "n",
-        "<leader>rh",
+        "<leader>a",
         rt.hover_actions.hover_actions,
         { buffer = bufnr, desc = "[R]ust [H]over" }
       )
       -- Code action groups
       vim.keymap.set(
         "n",
-        "<leader>ra",
+        "<leader>r",
         rt.code_action_group.code_action_group,
         { buffer = bufnr, desc = "[R]ust [A]ctions" }
       )

@@ -76,7 +76,7 @@ if &t_Co >= 256 || has("gui_running")
     hi Keyword        ctermbg=bg ctermfg=3    cterm=NONE      guibg=bg      guifg=#d7ae38 gui=NONE
     hi String         ctermbg=bg ctermfg=6    cterm=NONE      guibg=bg      guifg=#88a2a4 gui=NONE
     hi Number         ctermbg=bg ctermfg=5    cterm=NONE      guibg=bg      guifg=#c7a095 gui=NONE
-    hi Float          ctermbg=bg ctermfg=5    cterm=NONE      guibg=bg      guifg=#0c0c0c gui=NONE
+    hi Float          ctermbg=bg ctermfg=5    cterm=NONE      guibg=bg      guifg=#c7a095 gui=NONE
     hi Boolean        ctermbg=bg ctermfg=12   cterm=NONE      guibg=bg      guifg=#bad4f5 gui=NONE
     hi Todo           ctermbg=bg ctermfg=2    cterm=bold      guibg=bg      guifg=#7bb292 gui=bold
     hi Type           ctermbg=bg ctermfg=11   cterm=NONE      guibg=bg      guifg=#c4c18b gui=NONE
