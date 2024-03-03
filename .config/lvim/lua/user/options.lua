@@ -1,3 +1,17 @@
+lvim.colorscheme = "anderson"
+lvim.log.level = "warn"
+lvim.builtin.alpha.active = true
+lvim.reload_config_on_save = false
+lvim.builtin.illuminate.active = false
+lvim.builtin.bufferline.active = false
+lvim.builtin.terminal.persist_mode = false
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.breadcrumbs.active = true
+lvim.builtin.dap.active = true
+lvim.transparent_window = true
+lvim.format_on_save.enabled = true
+
 -- :help options
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
@@ -33,8 +47,6 @@ vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 6 -- is one of my fav
 vim.opt.sidescrolloff = 6
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
-
-vim.opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
