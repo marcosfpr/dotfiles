@@ -1,12 +1,13 @@
 lvim.plugins = {
 	{ "lunarvim/colorschemes" },
+	{ "rebelot/kanagawa.nvim" },
 	-- Useful status updates for LSP
-	-- {
-	-- 	"j-hui/fidget.nvim",
-	-- 	config = function()
-	-- 		require("fidget").setup({ window = { winblend = 0 } })
-	-- 	end,
-	-- },
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({ window = { winblend = 0 } })
+		end,
+	},
 	{
 		"zbirenbaum/copilot.lua",
 		event = "VimEnter",
