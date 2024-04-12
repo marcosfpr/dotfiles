@@ -13,7 +13,17 @@ lvim.plugins = {
 		event = "VimEnter",
 		config = function()
 			vim.defer_fn(function()
-				require("copilot").setup()
+				require("copilot").setup({
+					suggestion = {
+						enabled = true,
+						keymap = {
+							accept = "<Right>",
+							next = "<Up>",
+							prev = "<Down>",
+							dismiss = "<Left>",
+						},
+					},
+				})
 			end, 100)
 		end,
 	},

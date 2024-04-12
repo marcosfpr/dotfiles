@@ -10,6 +10,7 @@ formatters.setup({
 	},
 	{ name = "stylua" },
 	{ name = "rustfmt" },
+	{ name = "shfmt" },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
