@@ -3,13 +3,13 @@ lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.reload_config_on_save = false
 lvim.builtin.illuminate.active = false
-lvim.builtin.bufferline.active = false
+lvim.builtin.bufferline.active = true
 lvim.builtin.terminal.persist_mode = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.dap.active = true
-lvim.transparent_window = false
+lvim.transparent_window = true
 lvim.format_on_save.enabled = true
 
 -- :help options

@@ -50,9 +50,6 @@ pcall(function()
 						enable = true,
 						command = "clippy",
 					},
-					rustfmt = {
-						extraArgs = { "+nightly" },
-					},
 					-- checkOnSave = {
 					--    allFeatures = true,
 					--    overrideCommand = {
