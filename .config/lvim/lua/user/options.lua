@@ -1,21 +1,19 @@
-lvim.colorscheme = "kanagawa-dragon"
+lvim.colorscheme = "alabaster"
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.reload_config_on_save = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.terminal.persist_mode = false
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.dap.active = false
-lvim.transparent_window = false
-vim.format_on_save.enabled = true
+lvim.transparent_window = true
+lvim.format_on_save.enabled = true
 
 lvim.lsp.automatic_servers_installation = false
 
 -- :help options
-vim.opt.background = "dark" -- or "dark" for dark mode
+vim.opt.background = "light" -- or "dark" for dark mode
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages

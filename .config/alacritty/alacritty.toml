@@ -1,4 +1,5 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/alabaster.toml"]
+# import = ["/Users/mfpr/.config/alacritty/themes/themes/alabaster_dark.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
