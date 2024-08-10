@@ -1,14 +1,14 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/ayu_dark.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
 
 [colors]
-draw_bold_text_with_bright_colors = true 
+draw_bold_text_with_bright_colors = false
 
 [font]
 size = 12 
 
 [font.offset]
 x = 0  
-y = 10
+y = 2 
 
 
 [font.bold]
@@ -41,7 +41,7 @@ save_to_clipboard = false
 
 [window]
 decorations = "Full" 
-opacity =  0.95
+opacity = 1 
 
 [window.class]
 general = "Alacritty"
