@@ -1,0 +1,94 @@
+\documentclass{report}
+
+\usepackage[portuguese]{babel}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amsfonts}   % math fonts
+\usepackage{amssymb}    % extra math symbols
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{verbatim}   % \begin{comment} multi-line comments \end{comment}
+\usepackage{color}      % \textcolor{red}{colorful text}
+
+% Mathtools package
+% http://www.tex.ac.uk/ctan/macros/latex/contrib/mh/mathtools.pdf
+\mathtoolsset{
+  showonlyrefs
+}
+
+\graphicspath{{./fig/}}    % put figures in ./fig
+
+\setlength{\parindent}{0pt}  % don't indent paragraphs
+\setlength{\parskip}{1ex}    % extra space after paragraphs
+
+% New definition of square root, closes over content
+% Renames \sqrt as \oldsqrt
+\let\oldsqrt\sqrt
+% Defines the new \sqrt in terms of the old one
+\def\sqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{%
+\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+
+
+% Define argmax
+\DeclareMathOperator*{\argmax}{arg\,max\,}
+\DeclareMathOperator*{\argmin}{arg\,min\,}
+\DeclareMathOperator*{\maximize}{maximize\,}
+\DeclareMathOperator*{\minimize}{minimize\,}
+\DeclareMathOperator*{\subjectto}{subject\,to\,}
+\DeclareMathOperator*{\dom}{dom\,}
+\DeclareMathOperator*{\range}{range\,}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\erf}[1]{\operatorname{erf}\left(#1\right)}
+\newcommand{\erfc}[1]{\operatorname{erfc}\left(#1\right)}
+\newcommand{\erfu}{\erf{\frac{u}{\sqrt{2}}}}
+\newcommand{\erfcu}{\erfc{\frac{u}{\sqrt{2}}}}
+\newcommand{\mx}[1]{\mathbf{#1}}
+\newcommand{\x}{\vect{x}}
+\newcommand{\y}{\vect{y}}
+\renewcommand{\a}{\vect{a}}  % overwrite \a, usually used for accents
+\newcommand{\A}{\mx{A}} % matrix A
+%\renewcommand{\L}{\mx{L}} % matrix L
+\newcommand{\U}{\mx{U}} % matrix U
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\integer}{\mathbb{Z}}
+\renewcommand{\natural}{\mathbb{N}}
+\newcommand{\gaussian}{\mathcal{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+
+
+\newtheorem*{theorem*}{Teorema}
+\newtheorem*{lemma*}{Lema}
+\newtheorem*{corollary*}{Corolário}
+\newtheorem*{definition*}{Definição}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newtheorem{corollary}{Corolário}
+\newtheorem{definition}{Definição}
+
+\title{\Huge{Ensaio sobre}\\Criptografia}
+\author{\huge{Marcos F. P. Rezende}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\pagebreak
+
+\chapter{Introdução à Criptografia}\label{ch:intro}
+\section{O que é criptografia?}
+Cripto
+\begin{theorem}
+  This is a theorem.
+\end{theorem}
+
+\end{document}

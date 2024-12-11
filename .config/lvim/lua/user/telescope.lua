@@ -7,3 +7,4 @@ lvim.builtin.telescope.extensions.fzf.case_mode = "ignore_case"
 
 lvim.builtin.telescope.pickers.find_files.theme = "ivy"
 lvim.builtin.telescope.pickers.buffers.theme = "ivy"
+lvim.builtin.telescope.pickers.live_grep.theme = "ivy"

@@ -7,3 +7,7 @@ require("which-key").register({
 		g = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "[G]et Python Virtualenv" },
 	},
 })
+
+lvim.builtin.nvimtree.setup.diagnostics = {
+	enable = false,
+}
