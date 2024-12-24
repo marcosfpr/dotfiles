@@ -107,7 +107,3 @@ source "${HOME}/.bashrc"
 eval "$(rbenv init - zsh)"
 
 
-alias nvim="lvim"
-
-
-

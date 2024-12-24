@@ -8,7 +8,7 @@ lvim.builtin.terminal.persist_mode = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.dap.active = false
 lvim.builtin.lualine.style = "none"
-lvim.transparent_window = false
+lvim.transparent_window = true
 lvim.format_on_save.enabled = true
 lvim.use_icons = true
 

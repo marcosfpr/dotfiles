@@ -1,12 +1,10 @@
-# import = ["/Users/mfpr/.config/alacritty/themes/themes/alabaster.toml"]
-import = ["/Users/mfpr/.config/alacritty/themes/themes/hyper.toml"]
-
+import = ["/Users/mfpr/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
 
 [font]
-size = 16 
+size = 14 
 
 [font.offset]
 x = 0 

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/mfpr/org'
+let g:netrw_dirhist_5='/Users/mfpr/projects/crypto/sealy/sealy/src'
+let g:netrw_dirhist_4='/Users/mfpr/projects/crypto/sealy/sealy'
+let g:netrw_dirhist_3='/Users/mfpr/projects/crypto/sealy'
+let g:netrw_dirhist_2='/Users/mfpr/projects/crypto/sealy/sealy/src'
+let g:netrw_dirhist_1='/Users/mfpr/projects/crypto/sealy/sealy'
+let g:netrw_dirhist_0='/Users/mfpr/projects/crypto/sealy'
+let g:netrw_dirhist_9='/Users/mfpr/projects/crypto/vinegere/src'
+let g:netrw_dirhist_8='/Users/mfpr/projects/crypto/vinegere'
+let g:netrw_dirhist_7='/Users/mfpr/projects/crypto/vinegere/src'
