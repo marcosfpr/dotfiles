@@ -122,13 +122,15 @@ syntax on
 
 set regexpengine=0
 
+set background=dark
+set encoding=utf8
+
 try
     colorscheme habamax
+    highlight Special guifg=#A0A0A0 ctermfg=Grey
 catch
 endtry
 
-set background=dark
-set encoding=utf8
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,8 +139,8 @@ set encoding=utf8
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>P "+p
-vnoremap <leader>P "+p
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -201,6 +203,7 @@ if has("autocmd")
 endif
 
 let t:is_transparent = 0
+
 function! Toggle_transparent()
     if t:is_transparent == 0
         hi Normal guibg=NONE ctermbg=NONE
@@ -211,9 +214,12 @@ function! Toggle_transparent()
     endif
 endfunction
 
+map <leader>tb :call Toggle_transparent()<CR>
+
+call Toggle_transparent()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
+" => Coc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if empty(glob('~/.vim/autoload/plug.vim'))
