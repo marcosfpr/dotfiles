@@ -149,8 +149,10 @@ map <C-l> <C-W>l
 
 map <leader>b :ls<CR>:b<Space>
 
-map <S-l> :bnext<cr>
-map <S-h> :bprevious<cr>
+map <S-N> :tabnew<cr>
+map <S-C> :tabclose<cr> 
+map <S-L> :tabnext<cr>
+map <S-H> :tabprevious<cr>
 
 "switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -286,9 +288,6 @@ nnoremap <leader>tn :tn<CR>
 nnoremap <leader>tp :tp<CR>
 nnoremap <leader>tf :tfirst<CR>
 nnoremap <leader>tl :tlast<CR>
-
-" Open tag in a new tab
-nnoremap <leader>tt :tab tag <C-r><C-w><CR>
 
 
 """""""""""""""""""""""""""""""
