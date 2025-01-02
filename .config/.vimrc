@@ -431,5 +431,5 @@ nnoremap <silent><nowait> <space>cs  :<C-u>CocList -I symbols<cr>
 " => Rust
 "
 """""""""""""""""""""""""""""""
-command! RustCheck :CocCommand rust-analyzer.runFlycheck
+command! CargoCheck :CocCommand rust-analyzer.runFlycheck
 nmap <leader>rr :CocCommand rust-analyzer.run<CR>
