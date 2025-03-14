@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/mfpr/.config'
+let g:netrw_dirhist_7='/Users/mfpr/.config/vim'
+let g:netrw_dirhist_6='/Users/mfpr/.config/vim/pack'
+let g:netrw_dirhist_5='/Users/mfpr/.config/vim/pack/plugins'
+let g:netrw_dirhist_4='/Users/mfpr/.config/vim/pack/plugins/start'
+let g:netrw_dirhist_3='/Users/mfpr/.config/vim/pack/plugins'
+let g:netrw_dirhist_2='/Users/mfpr/.config/vim/pack'
+let g:netrw_dirhist_1='/Users/mfpr/.config/vim/pack/github'
+let g:netrw_dirhist_0='/Users/mfpr/.config/vim/pack'
+let g:netrw_dirhist_9='/Users/mfpr/.config/vim'

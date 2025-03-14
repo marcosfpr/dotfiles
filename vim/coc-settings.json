@@ -1,0 +1,6 @@
+{
+    "rust-analyzer.checkOnSave": false,
+    "python.venvPath": "/Users/mfpr/venvs",
+    "inlayHint.enable": false
+}
+
