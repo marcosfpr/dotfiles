@@ -1,0 +1,40 @@
+[user]
+	name = marcosfpr
+	email = mfprezende@gmail.com
+[config]
+	user = marcosfpr
+	email = mfprezende@gmail.com
+[core]
+    pager = delta
+    editor = vim 
+[ui "color"]
+	ui = always
+[color]
+	ui = true
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false  # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[interactive]
+    diffFilter = delta --color-only
+[alias]
+    c = commit
+	s = status
+	ca = commit --amend --no-edit
+	pf = push --force-with-lease
+    sl = stash list
+[pull]
+	ff = only
+[push]
+	default = simple
+[help]
+	autocorrect = 1
+[diff]
+	algorithm = patience
+	compactionHeuristic = true
+[protocol]
+	version = 2
