@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "coc-rust-analyzer": ">=0.81.2"
+    "coc-rust-analyzer": ">=0.81.2",
+    "coc-pyright": ">=1.1.398"
   }
 }

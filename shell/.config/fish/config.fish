@@ -8,6 +8,16 @@ abbr -a l 'ls'
 abbr -a ll 'ls -l'
 abbr -a lll 'ls -la'
 
+# Fast open of common directories
+abbr -a org 'vim ~/Genesis/org'
+abbr -a dot 'vim ~/dotfiles'
+abbr -a vimrc 'vim ~/.vimrc'
+abbr -a ala 'vim ~/.config/alacritty/alacritty.toml'
+abbr -a fc 'vim ~/.config/fish/config.fish'
+
+abbr -a fz 'fzf --height 40% --reverse --inline-info' 
+
+
 if test -f /usr/share/autojump/autojump.fish;
 	source /usr/share/autojump/autojump.fish;
 end
@@ -34,15 +44,13 @@ setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS '--height 20%'
 
 function fish_prompt
-	set_color brblack
+	set_color yellow
 	echo -n "["(date "+%H:%M")"] "
 	set_color blue
-	if [ $PWD != $HOME ]
-		set_color brblack
-		echo -n ':'
-		set_color yellow
-		echo -n $PWD
-	end
+    set_color yellow 
+    echo -n ':'
+    set_color yellow
+    echo -n $PWD
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color red

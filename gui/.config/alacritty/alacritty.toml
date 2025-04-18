@@ -1,4 +1,4 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/galaxy.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -10,8 +10,8 @@ SHELL = "/opt/homebrew/bin/fish"  # Replace with the actual path to your fish ex
 size = 14
 
 [font.offset]
-x = 2 
-y = 2
+x = 0 
+y = 0
 
 
 [font.bold]

@@ -124,11 +124,18 @@ set regexpengine=0
 
 set encoding=utf8
 
+let g:theme = "dark"
+
 try
-    " set background=light
-    " colorscheme retrobox
-    set background=dark
-    colorscheme retrobox
+    if g:theme == "dark"
+        set background=dark
+        colorscheme habamax
+        set background=dark
+    else
+        set background=light
+        colorscheme wildcharm
+    endif
+    
     highlight SpecialComment ctermfg=Grey guifg=#A0A0A0
     highlight Special guifg=#A0A0A0 ctermfg=Grey
 catch
@@ -215,6 +222,16 @@ function! Toggle_transparent()
         set background=dark
         let t:is_transparent = 0
     endif
+endfunction
+
+function! ReloadTheme()
+    try
+        source $MYVIMRC
+        redraw!
+        echo "Theme reloaded: " . g:theme
+    catch
+        echoerr "Failed to reload theme"
+    endtry
 endfunction
 
 map <leader>tb :call Toggle_transparent()<CR>
