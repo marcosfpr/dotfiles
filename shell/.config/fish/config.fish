@@ -44,16 +44,16 @@ setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS '--height 20%'
 
 function fish_prompt
-	set_color yellow
+	set_color normal
 	echo -n "["(date "+%H:%M")"] "
-	set_color blue
-    set_color yellow 
+	set_color normal
+    set_color normal
     echo -n ':'
-    set_color yellow
+    set_color normal
     echo -n $PWD
-	set_color green
+	set_color normal
 	printf '%s ' (__fish_git_prompt)
-	set_color red
+	set_color normal
 	echo -n '| '
 	set_color normal
 end
