@@ -195,8 +195,8 @@ vnoremap $` <esc>`>a`<esc>`<i`<esc>
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cno $h e ~/
-cno $p e ~/projects
-cno $o e ~/org
+cno $p e ~/Genesis
+cno $o e ~/Genesis/org
 cno $c e <C-\>eCurrentFileDir("e")<CR>
 
 "delete trailing white space on save, useful for some filetypes ;)

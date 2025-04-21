@@ -2,6 +2,7 @@
   "dependencies": {
     "coc-rust-analyzer": ">=0.81.2",
     "coc-pyright": ">=1.1.398",
-    "coc-clangd": ">=0.32.0"
+    "coc-clangd": ">=0.32.0",
+    "coc-html": ">=1.8.0"
   }
 }
