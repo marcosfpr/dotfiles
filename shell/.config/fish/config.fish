@@ -9,7 +9,10 @@ abbr -a ll 'ls -l'
 abbr -a lll 'ls -la'
 
 # Fast open of common directories
+abbr -a gen 'cd ~/Genesis'
 abbr -a org 'vim ~/Genesis/org'
+abbr -a probe 'vim ~/Genesis/probe'
+abbr -a ufop 'vim ~/Genesis/ufop'
 abbr -a dot 'vim ~/dotfiles'
 abbr -a vimrc 'vim ~/.vimrc'
 abbr -a ala 'vim ~/.config/alacritty/alacritty.toml'
@@ -56,4 +59,8 @@ function fish_prompt
 	set_color normal
 	echo -n '| '
 	set_color normal
+end
+
+function fish_postexec
+  echo "Exit status: " $status
 end

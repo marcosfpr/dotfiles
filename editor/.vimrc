@@ -40,10 +40,6 @@ set wrap
 "stop auto commenting, this is hurtful more then it is useful
 set formatoptions-=cro
 
-"cursor line"
-set cursorline
-:highlight CursorLine cterm=none ctermbg=black
-
 "highlight search pattern"
 set hlsearch 
 
@@ -117,20 +113,16 @@ set whichwrap+=<,>,h,l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 syntax on
 
 set regexpengine=0
-
 set encoding=utf8
-
-let g:theme = "dark"
+let g:theme = "light"
 
 try
     if g:theme == "dark"
         set background=dark
         colorscheme habamax
-        set background=dark
     else
         set background=light
         colorscheme wildcharm
@@ -140,8 +132,6 @@ try
     highlight Special guifg=#A0A0A0 ctermfg=Grey
 catch
 endtry
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual Mode
@@ -224,6 +214,8 @@ function! Toggle_transparent()
     endif
 endfunction
 
+map <leader>tb :call Toggle_transparent()<CR>
+
 function! ReloadTheme()
     try
         source $MYVIMRC
@@ -234,9 +226,6 @@ function! ReloadTheme()
     endtry
 endfunction
 
-map <leader>tb :call Toggle_transparent()<CR>
-
-call Toggle_transparent()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc
@@ -450,3 +439,20 @@ nnoremap <silent><nowait> <space>cs  :<C-u>CocList -I symbols<cr>
 """""""""""""""""""""""""""""""
 command! CargoCheck :CocCommand rust-analyzer.runFlycheck
 nmap <leader>rr :CocCommand rust-analyzer.run<CR>
+
+"""""""""""""""""""""""""""""""
+" => Disable highlighting 
+"""""""""""""""""""""""""""""""
+
+" No syntax highlighting
+syntax on
+
+" No cursor line for netrw
+autocmd FileType netrw setlocal nocursorline
+
+" No background color for tabline
+highlight TabLine      cterm=NONE ctermbg=NONE guibg=NONE
+highlight TabLineFill  cterm=NONE ctermbg=NONE guibg=NONE
+
+" Transparent background
+call Toggle_transparent()

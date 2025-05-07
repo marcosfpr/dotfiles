@@ -1,33 +1,33 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/alabaster_dark.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/solarized_light.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
 
 [env]
-SHELL = "/opt/homebrew/bin/fish"  # Replace with the actual path to your fish executable
+SHELL = "/opt/homebrew/bin/fish" 
 
 [font]
 size = 14
 
 [font.offset]
-x = 2 
-y = 5 
+x = 0 
+y = 0 
 
 
 [font.bold]
-family = "Cascadia Mono"
+family = "Menlo"
 style = "Bold"
 
 [font.bold_italic]
-family = "Cascadia Mono"
+family = "Menlo"
 style = "Bold Italic"
 
 [font.italic]
-family = "Cascadia Mono"
+family = "Menlo"
 style = "Italic"
 
 [font.normal]
-family = "Cascadia Mono"
+family = "Menlo"
 style = "Regular"
 
 [[keyboard.bindings]]
