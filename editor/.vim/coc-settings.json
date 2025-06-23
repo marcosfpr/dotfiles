@@ -2,6 +2,7 @@
     "rust-analyzer.checkOnSave": false,
     "python.venvPath": "/Users/mfpr/venvs",
     "pyright.typeCheckingMode": "off",
+    "python.formatting.provider": "ruff",
     "inlayHint.enable": false
 }
 

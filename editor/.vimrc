@@ -117,7 +117,7 @@ syntax on
 
 set regexpengine=0
 set encoding=utf8
-let g:theme = "light"
+let g:theme = "dark"
 
 try
     if g:theme == "dark"
@@ -130,6 +130,11 @@ try
     
     highlight SpecialComment ctermfg=Grey guifg=#A0A0A0
     highlight Special guifg=#A0A0A0 ctermfg=Grey
+
+    " --- Tabline Configuration ---
+    highlight TabLineSel cterm=bold ctermfg=black ctermbg=green guifg=black guibg=#88B04B
+    highlight TabLine cterm=NONE ctermfg=lightgrey ctermbg=NONE guifg=#D3D3D3 guibg=NONE
+    highlight TabLineFill cterm=NONE ctermbg=NONE guibg=NONE
 catch
 endtry
 
@@ -249,6 +254,15 @@ call plug#end()
 imap <silent><script><expr> <Right> copilot#Accept("\<CR>")
 imap <silent><script><expr> <Up> copilot#Next()
 let g:copilot_no_tab_map = v:true
+
+""""""""""""""""""""""""""""""
+" => Bookmarks
+""""""""""""""""""""""""""""""
+Plug 'MattesGroeger/vim-bookmarks'
+nnoremap <leader>m <Plug>BookmarkToggle
+nnoremap <leader>M <Plug>BookmarkShowAll
+nnoremap <leader>mn <Plug>BookmarkNext
+nnoremap <leader>mp <Plug>BookmarkPrev
 
 """"""""""""""""""""""""""""""
 " => Man
@@ -445,7 +459,12 @@ nmap <leader>rr :CocCommand rust-analyzer.run<CR>
 """""""""""""""""""""""""""""""
 
 " No syntax highlighting
-syntax on
+" syntax off
+" set notermguicolors
+" set nocursorline
+" set noshowmode
+" set signcolumn=auto
+" highlight clear
 
 " No cursor line for netrw
 autocmd FileType netrw setlocal nocursorline
