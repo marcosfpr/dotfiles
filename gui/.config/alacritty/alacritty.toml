@@ -1,4 +1,4 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/solarized_light.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/ayu_dark.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -15,19 +15,19 @@ y = 0
 
 
 [font.bold]
-family = "Menlo"
+family = "Iosevka"
 style = "Bold"
 
 [font.bold_italic]
-family = "Menlo"
+family = "Iosevka"
 style = "Bold Italic"
 
 [font.italic]
-family = "Menlo"
+family = "Iosevka"
 style = "Italic"
 
 [font.normal]
-family = "Menlo"
+family = "Iosevka"
 style = "Regular"
 
 [[keyboard.bindings]]

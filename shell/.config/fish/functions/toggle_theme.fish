@@ -4,8 +4,8 @@ function toggle_theme
     set alacritty_config ~/.config/alacritty/alacritty.toml
     set vimrc (realpath ~/.vimrc)
 
-    set alacritty_light "themes/solarized_light"
-    set alacritty_dark "themes/solarized_osaka"
+    set alacritty_light "themes/ayu_light"
+    set alacritty_dark "themes/ayu_dark"
 
     set current_theme (grep 'let g:theme = "light"' $vimrc >/dev/null; and echo "light"; or echo "dark")
 
