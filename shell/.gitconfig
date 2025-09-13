@@ -23,6 +23,7 @@
 [alias]
     c = commit
 	s = status
+    p = push
 	ca = commit --amend --no-edit
 	pf = push --force-with-lease
     sl = stash list

@@ -287,27 +287,31 @@ nmap <leader>zz <Plug>VimwikiIndex
 nmap <leader>zt <Plug>VimwikiTabIndex
 nmap <leader>zs <Plug>VimwikiUISelect
 
-
-nmap <leader>zi <Plug>VimwikiDiaryIndex
-nmap <leader>z<leader>z <Plug>VimwikiMakeDiaryNote
-nmap <leader>z<leader>t <Plug>VimwikiTabMakeDiaryNote
-nmap <leader>z<leader>y <Plug>VimwikiMakeYesterdayDiaryNote
-nmap <leader>z<leader>m <Plug>VimwikiMakeTomorrowDiaryNote
-
 nmap <leader>gl <Plug>VimwikiFollowLink
 
-autocmd FileType vimwiki nmap <buffer> <leader>z<leader>i <Plug>VimwikiDiaryGenerateLinks
 autocmd FileType vimwiki nmap <buffer> <leader>zc <Plug>VimwikiColorize
 autocmd FileType vimwiki vmap <buffer> <leader>zc <Plug>VimwikiColorize
 autocmd FileType vimwiki nmap <buffer> <leader>zn <Plug>VimwikiGoto
 autocmd FileType vimwiki nmap <buffer> <leader>zd <Plug>VimwikiDeleteFile
 autocmd FileType vimwiki nmap <buffer> <leader>zr <Plug>VimwikiRenameFile
 
-let g:vimwiki_list = [{'path': '~/Genesis/org/wiki/',
-                      \ 'syntax': 'markdown',
-                      \ 'ext': 'md'}]
-let g:vimwiki_global_ext = 0
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" Change the configuration below to use the default Vimwiki format
+let g:vimwiki_list = [{
+\   'path': '~/Genesis/org/wiki/',
+\   'syntax': 'default',
+\   'ext': '.wiki',
+\   'path_html': '~/Genesis/org/blog/wiki',
+\   'template_path': '~/Genesis/org/blog',
+\   'template_ext': '.html',
+\   'template_default': 'wiki_template',
+\   'name': 'wiki'
+\ }, {
+\   'path': '~/Genesis/org/ziki/',
+\   'syntax': 'default',
+\   'ext': '.wiki',
+\   'name': 'ziki'
+\ }]
+
 
 """"""""""""""""""""""""""""""
 " => Man

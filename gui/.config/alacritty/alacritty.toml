@@ -1,4 +1,4 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/ayu_dark.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/base16_default_dark.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -10,24 +10,24 @@ SHELL = "/opt/homebrew/bin/fish"
 size = 14
 
 [font.offset]
-x = 0 
-y = 0 
+x = 0
+y = 4 
 
 
 [font.bold]
-family = "Iosevka"
+family = "Roboto Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka"
+family = "Roboto Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Iosevka"
+family = "Roboto Mono"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka"
+family = "Roboto Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -53,3 +53,6 @@ instance = "Alacritty"
 [window.padding]
 x = 0 
 y = 0 
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }
