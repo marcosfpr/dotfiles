@@ -129,7 +129,8 @@ let base16colorspace=256
 try
     if g:theme == "dark"
         set background=dark
-        colorscheme habamax
+        " colorscheme habamax
+        colorscheme pablo
     else
         set background=light
         colorscheme wildcharm
@@ -142,6 +143,14 @@ try
     highlight TabLineSel cterm=bold ctermfg=black ctermbg=green guifg=black guibg=#88B04B
     highlight TabLine cterm=NONE ctermfg=lightgrey ctermbg=NONE guifg=#D3D3D3 guibg=NONE
     highlight TabLineFill cterm=NONE ctermbg=NONE guibg=NONE
+
+    "-- Cursor Line and Line Number Configuration ---
+    highlight LineNr       guifg=#6c6c6c   " grey line numbers
+    highlight CursorLineNr guifg=#ffd787   gui=bold
+    highlight CursorLine   guibg=#262626
+
+    " -- Vertical bar before the line number, also known as 'sign column', make it transparent --
+    highlight SignColumn guibg=NONE ctermbg=NONE
 catch
 endtry
 
@@ -287,6 +296,8 @@ nmap <leader>zz <Plug>VimwikiIndex
 nmap <leader>zt <Plug>VimwikiTabIndex
 nmap <leader>zs <Plug>VimwikiUISelect
 
+nmap <leader>zd <Plug>VimwikiMakeDiaryNote
+
 nmap <leader>gl <Plug>VimwikiFollowLink
 
 autocmd FileType vimwiki nmap <buffer> <leader>zc <Plug>VimwikiColorize
@@ -311,7 +322,6 @@ let g:vimwiki_list = [{
 \   'ext': '.wiki',
 \   'name': 'ziki'
 \ }]
-
 
 """"""""""""""""""""""""""""""
 " => Man

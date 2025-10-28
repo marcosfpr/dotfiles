@@ -1,4 +1,4 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/base16_default_dark.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/github_dark_high_contrast.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false

@@ -46,20 +46,21 @@ setenv FZF_DEFAULT_COMMAND 'fd --type file --follow'
 setenv FZF_CTRL_T_COMMAND 'fd --type file --follow'
 setenv FZF_DEFAULT_OPTS '--height 20%'
 
-function fish_prompt
-	set_color normal
-	echo -n "["(date "+%H:%M")"] "
-	set_color normal
-    set_color normal
-    echo -n ':'
-    set_color normal
-    echo -n $PWD
-	set_color normal
-	printf '%s ' (__fish_git_prompt)
-	set_color normal
-	echo -n '| '
-	set_color normal
-end
+# Default fish_prompt
+# function fish_prompt
+# 	set_color normal
+# 	echo -n "["(date "+%H:%M")"] "
+# 	set_color normal
+#     set_color normal
+#     echo -n ':'
+#     set_color normal
+#     echo -n $PWD
+# 	set_color normal
+# 	printf '%s ' (__fish_git_prompt)
+# 	set_color normal
+# 	echo -n '| '
+# 	set_color normal
+# end
 
 function fish_postexec
   echo "Exit status: " $status
