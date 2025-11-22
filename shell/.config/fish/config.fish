@@ -32,6 +32,10 @@ set __fish_git_prompt_showstashstate ''
 set __fish_git_prompt_showupstream 'none'
 set -g fish_prompt_pwd_dir_length 3
 
+# Terminal color settings
+set -gx TERM xterm-256color
+set -gx COLORTERM truecolor
+
 # colored man output
 # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
 setenv LESS_TERMCAP_mb \e'[01;31m'       # begin blinking

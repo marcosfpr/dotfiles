@@ -133,7 +133,7 @@ try
         colorscheme pablo
     else
         set background=light
-        colorscheme wildcharm
+        colorscheme lunaperche
     endif
     
     highlight SpecialComment ctermfg=Grey guifg=#A0A0A0
@@ -147,7 +147,7 @@ try
     "-- Cursor Line and Line Number Configuration ---
     highlight LineNr       guifg=#6c6c6c   " grey line numbers
     highlight CursorLineNr guifg=#ffd787   gui=bold
-    highlight CursorLine   guibg=#262626
+    highlight CursorLine   guibg=#7d7d7d
 
     " -- Vertical bar before the line number, also known as 'sign column', make it transparent --
     highlight SignColumn guibg=NONE ctermbg=NONE

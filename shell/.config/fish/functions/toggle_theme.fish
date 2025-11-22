@@ -11,8 +11,8 @@ function toggle_theme
 
     if test "$current_theme" = "light"
         echo "Switching to dark theme..."
-        sed -i '' "s|$alacritty_light|$alacritty_dark|" $alacritty_config
         sed -i '' 's|let g:theme = "light"|let g:theme = "dark"|' $vimrc
+        sed -i '' "s|$alacritty_light|$alacritty_dark|" $alacritty_config
     else
         echo "Switching to light theme..."
         sed -i '' "s|$alacritty_dark|$alacritty_light|" $alacritty_config
