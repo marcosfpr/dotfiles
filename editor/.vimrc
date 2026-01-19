@@ -9,7 +9,7 @@ set termguicolors
 
 "enable mouse support"
 set mouse=a
-set ttymouse=xterm2
+set ttymouse=sgr
 
 "cursor shape"
 set guicursor=n-v-c:block,i:ver25
@@ -87,12 +87,6 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <leader>e :Ex<CR>
-map <leader>Ve :Vex<CR>
-map <leader>Se :Sex<CR>
-map <leader>Te :Tex<CR>
-
 set so=7
 
 let $LANG='en'
@@ -129,28 +123,30 @@ let base16colorspace=256
 try
     if g:theme == "dark"
         set background=dark
-        " colorscheme habamax
-        colorscheme pablo
+        colorscheme habamax
+
+        highlight LineNr       guifg=#6c6c6c guibg=#2b2b2b
+        highlight CursorLineNr guifg=#ffd787 guibg=#3a3a3a gui=bold
+        highlight CursorLine   guibg=#303030
+        highlight SignColumn   guibg=#2b2b2b
     else
         set background=light
-        colorscheme lunaperche
+        colorscheme xamabah
+
+        highlight LineNr       guifg=#555555 guibg=#c8c8c8
+        highlight SignColumn                 guibg=#c8c8c8
+        highlight FoldColumn                 guibg=#c8c8c8
+        highlight CursorLine   guibg=#bcbcbc gui=none
+        highlight CursorLineNr guifg=#000000 guibg=#bcbcbc gui=bold
     endif
     
+    " --- Comments Configuration ---
     highlight SpecialComment ctermfg=Grey guifg=#A0A0A0
     highlight Special guifg=#A0A0A0 ctermfg=Grey
 
-    " --- Tabline Configuration ---
-    highlight TabLineSel cterm=bold ctermfg=black ctermbg=green guifg=black guibg=#88B04B
-    highlight TabLine cterm=NONE ctermfg=lightgrey ctermbg=NONE guifg=#D3D3D3 guibg=NONE
-    highlight TabLineFill cterm=NONE ctermbg=NONE guibg=NONE
+    highlight VertSplit    guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+    highlight StatusLineNC guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
 
-    "-- Cursor Line and Line Number Configuration ---
-    highlight LineNr       guifg=#6c6c6c   " grey line numbers
-    highlight CursorLineNr guifg=#ffd787   gui=bold
-    highlight CursorLine   guibg=#7d7d7d
-
-    " -- Vertical bar before the line number, also known as 'sign column', make it transparent --
-    highlight SignColumn guibg=NONE ctermbg=NONE
 catch
 endtry
 
@@ -163,10 +159,10 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 map <leader>b :ls<CR>:b<Space>
 
@@ -292,22 +288,54 @@ nnoremap <leader>mp <Plug>BookmarkPrev
 set nocompatible
 set conceallevel=0
 
-nmap <leader>zz <Plug>VimwikiIndex
-nmap <leader>zt <Plug>VimwikiTabIndex
-nmap <leader>zs <Plug>VimwikiUISelect
+" General
+nmap <leader>zz <Plug>VimwikiUISelect
 
-nmap <leader>zd <Plug>VimwikiMakeDiaryNote
+" Diary - Disabled as I don't use them here.
+" nmap <leader>zdd <Plug>VimwikiMakeDiaryNote
+" nmap <leader>zdi <Plug>VimwikiDiaryIndex
+" nmap <leader>zdp <Plug>VimwikiDiaryPrevNote
+" nmap <leader>zdn <Plug>VimwikiDiaryNextNote
 
-nmap <leader>gl <Plug>VimwikiFollowLink
+" Disable default mappings that conflict with other plugins
+nmap <Leader>ww <Nop>
 
-autocmd FileType vimwiki nmap <buffer> <leader>zc <Plug>VimwikiColorize
-autocmd FileType vimwiki vmap <buffer> <leader>zc <Plug>VimwikiColorize
-autocmd FileType vimwiki nmap <buffer> <leader>zn <Plug>VimwikiGoto
-autocmd FileType vimwiki nmap <buffer> <leader>zd <Plug>VimwikiDeleteFile
+" Navigation
+
+autocmd FileType vimwiki nmap <buffer> <leader>zg <Plug>VimwikiGoto
+autocmd FileType vimwiki nmap <buffer> <leader>zk <Plug>VimwikiDeleteFile
 autocmd FileType vimwiki nmap <buffer> <leader>zr <Plug>VimwikiRenameFile
 
-" Change the configuration below to use the default Vimwiki format
-let g:vimwiki_list = [{
+" <CR> - Folow/Create link
+" nmap <leader>gl <Plug>VimwikiFollowLink
+" <C-S-CR> - Open link in new tab
+" <backspace> - Go back
+" <tab> - Next link in the current page
+" <S-tab> - Previous link in the current page
+
+" Editing
+" <C-Space> - Toggle list item
+" = - Add header
+" - - Remove header
+" + Create/decorate links
+" glm - increate ident of list item
+" gll - decrease ident of list item
+
+" Table Editing
+" <A-left> - Move table column left.
+" <A-right> - Move table column right.
+" <CR> - go down/create cell
+" <tab> go next/create cell
+" gqq - Reformat table
+
+let g:vimwiki_list = [
+\ {
+\   'path': '~/Genesis/org/kb/',
+\   'syntax': 'default',
+\   'ext': '.wiki',
+\   'name': 'knowledge base'
+\ },
+\ {
 \   'path': '~/Genesis/org/wiki/',
 \   'syntax': 'default',
 \   'ext': '.wiki',
@@ -316,12 +344,11 @@ let g:vimwiki_list = [{
 \   'template_ext': '.html',
 \   'template_default': 'wiki_template',
 \   'name': 'wiki'
-\ }, {
-\   'path': '~/Genesis/org/ziki/',
-\   'syntax': 'default',
-\   'ext': '.wiki',
-\   'name': 'ziki'
-\ }]
+\ } 
+\ ]
+
+let g:vimwiki_breadcrumbs_include_self = 1
+let g:vimwiki_breadcrumbs_sep = ' | '
 
 """"""""""""""""""""""""""""""
 " => Man
@@ -512,6 +539,20 @@ nnoremap <silent><nowait> <space>cs  :<C-u>CocList -I symbols<cr>
 command! CargoCheck :CocCommand rust-analyzer.runFlycheck
 nmap <leader>rr :CocCommand rust-analyzer.run<CR>
 
+
+"""""""""""""""""""""""""""""""
+" => Netrw
+"""""""""""""""""""""""""""""""
+
+map <leader>e :Ex<CR>
+
+" No cursor line for netrw
+let g:netrw_winsize = 30
+let g:netrw_localcopydircmd = 'cp -r'
+
+autocmd FileType netrw setlocal nocursorline
+nnoremap <leader>dd :Lexplore<CR>
+
 """""""""""""""""""""""""""""""
 " => Disable highlighting 
 """""""""""""""""""""""""""""""
@@ -528,8 +569,11 @@ nmap <leader>rr :CocCommand rust-analyzer.run<CR>
 autocmd FileType netrw setlocal nocursorline
 
 " No background color for tabline
-highlight TabLine      cterm=NONE ctermbg=NONE guibg=NONE
-highlight TabLineFill  cterm=NONE ctermbg=NONE guibg=NONE
+" highlight TabLine      cterm=NONE ctermbg=NONE guibg=NONE
+" highlight TabLineFill  cterm=NONE ctermbg=NONE guibg=NONE
 
 " Transparent background
 call Toggle_transparent()
+
+" Disabling copilot
+" let g:copilot_enabled = 0

@@ -8,18 +8,27 @@ abbr -a l 'ls'
 abbr -a ll 'ls -l'
 abbr -a lll 'ls -la'
 
+abbr -a lg 'lazygit'
+
 # Fast open of common directories
 abbr -a gen 'cd ~/Genesis'
-abbr -a org 'vim ~/Genesis/org'
-abbr -a probe 'vim ~/Genesis/probe'
-abbr -a ufop 'vim ~/Genesis/ufop'
-abbr -a dot 'vim ~/dotfiles'
+abbr -a org 'cd ~/Genesis/org'
+abbr -a probe 'cd ~/Genesis/probe'
+abbr -a ufop 'cd ~/Genesis/ufop'
+
+abbr -a dot 'cd ~/dotfiles'
+abbr -a vdot 'vim ~/dotfiles'
+
 abbr -a vimrc 'vim ~/.vimrc'
-abbr -a ala 'vim ~/.config/alacritty/alacritty.toml'
-abbr -a fc 'vim ~/.config/fish/config.fish'
+
+abbr -a ala 'cd ~/.config/alacritty'
+abbr -a vala 'vim ~/.config/alacritty/alacritty.toml'
+
+abbr -a fc 'cd ~/.config/fish'
+abbr -a vfc 'vim ~/.config/fish/config.fish'
 
 abbr -a fz 'fzf --height 40% --reverse --inline-info' 
-
+abbr -a vfz 'fzf --height 40% --reverse --inline-info | xargs -r vim'
 
 if test -f /usr/share/autojump/autojump.fish;
 	source /usr/share/autojump/autojump.fish;

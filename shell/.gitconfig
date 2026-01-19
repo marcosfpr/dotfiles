@@ -1,25 +1,17 @@
 [user]
 	name = marcosfpr
 	email = mfprezende@gmail.com
-[config]
-	user = marcosfpr
-	email = mfprezende@gmail.com
 [core]
-    pager = delta
     editor = vim 
 [ui "color"]
 	ui = always
 [color]
 	ui = true
-[delta]
-    navigate = true    # use n and N to move between diff sections
 [merge]
     tool = vimdiff
     conflictstyle = diff3
 [diff]
     colorMoved = default
-[interactive]
-    diffFilter = delta --color-only
 [alias]
     c = commit
 	s = status

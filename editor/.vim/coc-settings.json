@@ -1,8 +1,17 @@
 {
     "rust-analyzer.checkOnSave": false,
+
     "python.venvPath": "/Users/mfpr/venvs",
     "pyright.typeCheckingMode": "off",
     "python.formatting.provider": "ruff",
-    "inlayHint.enable": false
+
+    "inlayHint.enable": false,
+
+    "coc.suggest.floatEnable": false,
+    "coc.preferences.floatActions": false,
+    "coc.preferences.useQuickfixForLocations": true,
+
+    "workspace.progressTarget": "statusline",
+    "ui.dialogTarget": "menu"
 }
 
