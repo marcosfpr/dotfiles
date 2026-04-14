@@ -330,21 +330,11 @@ autocmd FileType vimwiki nmap <buffer> <leader>zr <Plug>VimwikiRenameFile
 
 let g:vimwiki_list = [
 \ {
-\   'path': '~/Genesis/org/kb/',
-\   'syntax': 'default',
-\   'ext': '.wiki',
-\   'name': 'knowledge base'
-\ },
-\ {
 \   'path': '~/Genesis/org/wiki/',
 \   'syntax': 'default',
 \   'ext': '.wiki',
-\   'path_html': '~/Genesis/org/blog/wiki',
-\   'template_path': '~/Genesis/org/blog',
-\   'template_ext': '.html',
-\   'template_default': 'wiki_template',
 \   'name': 'wiki'
-\ } 
+\ }
 \ ]
 
 let g:vimwiki_breadcrumbs_include_self = 1

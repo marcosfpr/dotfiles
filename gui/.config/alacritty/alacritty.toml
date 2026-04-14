@@ -1,4 +1,4 @@
-import = ["/Users/mfpr/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
+import = ["/Users/mfpr/.config/alacritty/themes/themes/github_dark_high_contrast.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -7,26 +7,30 @@ draw_bold_text_with_bright_colors = false
 SHELL = "/opt/homebrew/bin/fish" 
 
 [font]
-size = 14
+size = 16
 
 [font.offset]
-x = 1
-y = 4 
+x = 0
+y = -1
 
 [font.normal]
-family = "Noto Sans Mono"
+# family = "Noto Sans Mono"
+family = "UbuntuMono Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "Noto Sans Mono"
+# family = "Noto Sans Mono"
+family = "UbuntuMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "Noto Sans Mono"
+# family = "Noto Sans Mono"
+family = "UbuntuMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "Noto Sans Mono"
+# family = "Noto Sans Mono"
+family = "UbuntuMono Nerd Font"
 style = "Italic"
 
 [[keyboard.bindings]]
