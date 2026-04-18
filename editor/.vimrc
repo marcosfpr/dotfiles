@@ -117,7 +117,7 @@ syntax on
 set regexpengine=0
 set encoding=utf8
 
-let g:theme = "dark"
+let g:theme = "light"
 let base16colorspace=256
 
 try
@@ -579,11 +579,15 @@ nnoremap <leader>dd :Lexplore<CR>
 " " Line Number
 " highlight LineNr ctermfg=8
 
+" Set the highlight for search results
+highlight Search ctermfg=black ctermbg=cyan
+highlight IncSearch ctermfg=black ctermbg=cyan
+
 " Transparent background
 call Toggle_transparent()
 
 " Disabling copilot
-" let g:copilot_enabled = 0
+let g:copilot_enabled = 0
 
 " Disable conceal globally
 set conceallevel=0
