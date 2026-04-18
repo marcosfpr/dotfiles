@@ -5,13 +5,14 @@
     "pyright.typeCheckingMode": "off",
     "python.formatting.provider": "ruff",
 
-    "inlayHint.enable": false,
+    "workspace.progressTarget": "statusline",
+    "ui.dialogTarget": "menu",
+    "typescript.highlight.locations": false,
 
     "coc.suggest.floatEnable": false,
     "coc.preferences.floatActions": false,
-    "coc.preferences.useQuickfixForLocations": true,
+    "coc.preferences.enableHighlight": false,
+    "coc.preferences.useQuickfixForLocations": true
 
-    "workspace.progressTarget": "statusline",
-    "ui.dialogTarget": "menu"
 }
 
