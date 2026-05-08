@@ -12,7 +12,15 @@
     "coc.suggest.floatEnable": false,
     "coc.preferences.floatActions": false,
     "coc.preferences.enableHighlight": false,
-    "coc.preferences.useQuickfixForLocations": true
+    "coc.preferences.useQuickfixForLocations": true,
+
+    "rust-analyzer.inlayHints.enable": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "never",
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "rust-analyzer.displayContextHints.enable": false
 
 }
 

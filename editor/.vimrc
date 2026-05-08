@@ -125,6 +125,9 @@ try
         set background=dark
         colorscheme habamax
 
+        " highlight Visual guibg=#5f5f00 guifg=NONE
+        " highlight VisualNOS guibg=#5f5f00 guifg=NONE
+
         highlight LineNr       guifg=#6c6c6c guibg=#2b2b2b
         highlight CursorLineNr guifg=#ffd787 guibg=#3a3a3a gui=bold
         highlight CursorLine   guibg=#303030
@@ -133,11 +136,13 @@ try
         set background=light
         colorscheme xamabah
 
-        highlight LineNr       guifg=#555555 guibg=#c8c8c8
-        highlight SignColumn                 guibg=#c8c8c8
-        highlight FoldColumn                 guibg=#c8c8c8
-        highlight CursorLine   guibg=#bcbcbc gui=none
-        highlight CursorLineNr guifg=#000000 guibg=#bcbcbc gui=bold
+        " highlight Visual guibg=#ffd787 guifg=NONE
+        " highlight VisualNOS guibg=#ffd787 guifg=NONE
+
+        highlight LineNr       guifg=#6c6c6c guibg=#C6C6C6
+        highlight CursorLineNr guifg=#ffd787   gui=bold
+        highlight CursorLine   guibg=#7d7d7d
+        highlight SignColumn   guibg=#C6C6C6
     endif
     
     " --- Comments Configuration ---
@@ -147,6 +152,10 @@ try
     highlight VertSplit    guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
     highlight StatusLineNC guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
 
+    " --- Tabline Configuration ---
+    " highlight TabLineSel cterm=bold ctermfg=black ctermbg=NONE guifg=black guibg=NONE
+    " highlight TabLine cterm=NONE ctermfg=NONE ctermbg=NONE guifg=#D3D3D3 guibg=NONE
+    " highlight TabLineFill cterm=NONE ctermbg=NONE guibg=NONE
 catch
 endtry
 
@@ -223,10 +232,15 @@ let t:is_transparent = 0
 
 function! Toggle_transparent()
     if t:is_transparent == 0
-        hi Normal guibg=NONE ctermbg=NONE
+        if g:theme == "dark"
+            hi Normal guifg=#d4d4d4 guibg=NONE ctermbg=NONE
+        else
+            hi Normal guifg=#202020 guibg=NONE ctermbg=NONE
+        endif
         let t:is_transparent = 1
     else
-        set background=dark
+        execute 'set background=' . g:theme
+        colorscheme quiet
         let t:is_transparent = 0
     endif
 endfunction
@@ -242,6 +256,13 @@ function! ReloadTheme()
         echoerr "Failed to reload theme"
     endtry
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Netrw (File Explorer) Configuration
+" This is so buggy....
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>e :Ex<CR>
+map <leader>t :20Lexplore<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins 
@@ -277,7 +298,6 @@ let g:copilot_no_tab_map = v:true
 " => Bookmarks
 """"""""""""""""""""""""""""""
 nnoremap <leader>m <Plug>BookmarkToggle
-nnoremap <leader>. <Plug>BookmarkShowAll
 nnoremap <leader>M <Plug>BookmarkShowAll
 nnoremap <leader>mn <Plug>BookmarkNext
 nnoremap <leader>mp <Plug>BookmarkPrev
@@ -306,28 +326,6 @@ autocmd FileType vimwiki nmap <buffer> <leader>zg <Plug>VimwikiGoto
 autocmd FileType vimwiki nmap <buffer> <leader>zk <Plug>VimwikiDeleteFile
 autocmd FileType vimwiki nmap <buffer> <leader>zr <Plug>VimwikiRenameFile
 
-" <CR> - Folow/Create link
-" nmap <leader>gl <Plug>VimwikiFollowLink
-" <C-S-CR> - Open link in new tab
-" <backspace> - Go back
-" <tab> - Next link in the current page
-" <S-tab> - Previous link in the current page
-
-" Editing
-" <C-Space> - Toggle list item
-" = - Add header
-" - - Remove header
-" + Create/decorate links
-" glm - increate ident of list item
-" gll - decrease ident of list item
-
-" Table Editing
-" <A-left> - Move table column left.
-" <A-right> - Move table column right.
-" <CR> - go down/create cell
-" <tab> go next/create cell
-" gqq - Reformat table
-
 let g:vimwiki_list = [
 \ {
 \   'path': '~/Genesis/org/wiki/',
@@ -336,6 +334,8 @@ let g:vimwiki_list = [
 \   'name': 'wiki'
 \ }
 \ ]
+
+let g:vimwiki_ext2syntax = {}
 
 let g:vimwiki_breadcrumbs_include_self = 1
 let g:vimwiki_breadcrumbs_sep = ' | '
@@ -437,11 +437,21 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
+function! ClearCocHoverHighlights()
+  for id in getmatches()
+    if has_key(id, 'group') && id.group ==# 'CocHoverRange'
+      call matchdelete(id.id)
+    endif
+  endfor
+endfunction
+
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
+    " Delay to let the highlight apply before clearing
+    call timer_start(300, { -> ClearCocHoverHighlights() })
   else
-    call feedkeys('K', 'in')
+    execute 'normal! K'
   endif
 endfunction
 
@@ -552,18 +562,28 @@ nnoremap <leader>dd :Lexplore<CR>
 " set notermguicolors
 " set nocursorline
 " set noshowmode
-" set signcolumn=auto
+" set signcolumn=yes
 " highlight clear
 
-" No cursor line for netrw
-autocmd FileType netrw setlocal nocursorline
+" " No cursor line for netrw
+" autocmd FileType netrw setlocal nocursorline
 
-" No background color for tabline
+" " No background color for tabline
 " highlight TabLine      cterm=NONE ctermbg=NONE guibg=NONE
 " highlight TabLineFill  cterm=NONE ctermbg=NONE guibg=NONE
+" " Visual highlight
+" highlight Visual  guibg=#afeeee guifg=NONE    ctermbg=159
+" highlight Search  guibg=#008b8b guifg=#ffffff ctermbg=30  ctermfg=231
+" " Sign column transparent
+" highlight SignColumn ctermbg=NONE guibg=NONE
+" " Line Number
+" highlight LineNr ctermfg=8
 
 " Transparent background
 call Toggle_transparent()
 
 " Disabling copilot
 " let g:copilot_enabled = 0
+
+" Disable conceal globally
+set conceallevel=0
