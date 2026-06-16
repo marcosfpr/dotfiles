@@ -22,18 +22,14 @@ let g:loaded_vimwiki_breadcrumbs = 1
 " User configuration
 "------------------------------------------------------------------------------
 
-" Whether to include a link to the current page (if it's not the wiki index).
 if !exists('g:vimwiki_breadcrumbs_include_self')
   let g:vimwiki_breadcrumbs_include_self = 1
 endif
 
-" Fallback label if the wiki's root index has no '= Title =', and the wiki entry
-" doesn't have a 'name'.
 if !exists('g:vimwiki_breadcrumbs_default_root_label')
   let g:vimwiki_breadcrumbs_default_root_label = 'Wiki'
 endif
 
-" Breadcrumb separator (style). Keep spaces here if you want them.
 if !exists('g:vimwiki_breadcrumbs_sep')
   let g:vimwiki_breadcrumbs_sep = '/'
 endif
@@ -43,12 +39,10 @@ endif
 "------------------------------------------------------------------------------
 
 function! s:normpath(path) abort
-  " Expand ~, make absolute, simplify so prefix checks are stable.
   return simplify(fnamemodify(expand(a:path), ':p'))
 endfunction
 
 function! s:capitalize_words(text) abort
-  " Capitalize each word: 'knowledge base' -> 'Knowledge Base'
   let l:words = split(a:text, '\s\+')
   if empty(l:words)
     return ''
@@ -111,11 +105,6 @@ endfunction
 " Vimwiki list integration
 "------------------------------------------------------------------------------
 
-" Return a dict:
-"   { 'root': '/abs/path/to/wiki/', 'name': 'Knowledge Base', 'ext': '.wiki' }
-" or {} if no matching wiki.
-"
-" Longest-root-wins, in case paths overlap.
 function! s:find_vimwiki_for_file(file) abort
   let l:file = s:normpath(a:file)
 
@@ -137,7 +126,6 @@ function! s:find_vimwiki_for_file(file) abort
       continue
     endif
 
-    " Ensure root ends with a slash for consistent prefix math.
     if l:rootp[-1:] !=# '/'
       let l:rootp .= '/'
     endif
@@ -162,14 +150,12 @@ function! s:root_label(wiki) abort
     return get(g:, 'vimwiki_breadcrumbs_default_root_label', 'Wiki')
   endif
 
-  " Prefer title from root index file if present.
   let l:index = l:root . 'index.wiki'
   let l:title = s:title_from(l:index)
   if !empty(l:title)
     return l:title
   endif
 
-  " Else use capitalized wiki name from g:vimwiki_list if present.
   let l:name = get(a:wiki, 'name', '')
   if !empty(l:name)
     return l:name
@@ -204,7 +190,6 @@ function! s:vimwiki_breadcrumbs() abort
   let l:crumbs = []
   call add(l:crumbs, s:wiki_link(l:dir, l:root_index, s:root_label(l:wiki)))
 
-  " Add crumbs for each directory segment between root and current file.
   let l:rel_dir = substitute(l:dir[len(l:root):], '^/', '', '')
   if !empty(l:rel_dir)
     let l:path = l:root[:-2]  " strip trailing slash for concatenation
@@ -221,7 +206,6 @@ function! s:vimwiki_breadcrumbs() abort
     endfor
   endif
 
-  " Optionally include the current page (if not index.wiki).
   if get(g:, 'vimwiki_breadcrumbs_include_self', 0) && expand('%:t') !=# 'index.wiki'
     let l:self_title = s:title_from(l:file)
     if !empty(l:self_title)
@@ -229,7 +213,6 @@ function! s:vimwiki_breadcrumbs() abort
     endif
   endif
 
-  " User-configurable separator (style).
   let l:sep = get(g:, 'vimwiki_breadcrumbs_sep', '/')
   return join(l:crumbs, l:sep)
 endfunction

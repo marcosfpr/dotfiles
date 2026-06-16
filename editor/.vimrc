@@ -117,7 +117,7 @@ syntax on
 set regexpengine=0
 set encoding=utf8
 
-let g:theme = "light"
+let g:theme = "dark"
 let base16colorspace=256
 
 try
@@ -271,7 +271,6 @@ map <leader>t :20Lexplore<CR>
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vimwiki/vimwiki'
 Plug 'MattesGroeger/vim-bookmarks'
 
 call plug#end()
@@ -301,44 +300,6 @@ nnoremap <leader>m <Plug>BookmarkToggle
 nnoremap <leader>M <Plug>BookmarkShowAll
 nnoremap <leader>mn <Plug>BookmarkNext
 nnoremap <leader>mp <Plug>BookmarkPrev
-
-""""""""""""""""""""""""""""""
-" => Wiki 
-""""""""""""""""""""""""""""""
-set nocompatible
-set conceallevel=0
-
-" General
-nmap <leader>zz <Plug>VimwikiUISelect
-
-" Diary - Disabled as I don't use them here.
-" nmap <leader>zdd <Plug>VimwikiMakeDiaryNote
-" nmap <leader>zdi <Plug>VimwikiDiaryIndex
-" nmap <leader>zdp <Plug>VimwikiDiaryPrevNote
-" nmap <leader>zdn <Plug>VimwikiDiaryNextNote
-
-" Disable default mappings that conflict with other plugins
-nmap <Leader>ww <Nop>
-
-" Navigation
-
-autocmd FileType vimwiki nmap <buffer> <leader>zg <Plug>VimwikiGoto
-autocmd FileType vimwiki nmap <buffer> <leader>zk <Plug>VimwikiDeleteFile
-autocmd FileType vimwiki nmap <buffer> <leader>zr <Plug>VimwikiRenameFile
-
-let g:vimwiki_list = [
-\ {
-\   'path': '~/Genesis/org/wiki/',
-\   'syntax': 'default',
-\   'ext': '.wiki',
-\   'name': 'wiki'
-\ }
-\ ]
-
-let g:vimwiki_ext2syntax = {}
-
-let g:vimwiki_breadcrumbs_include_self = 1
-let g:vimwiki_breadcrumbs_sep = ' | '
 
 """"""""""""""""""""""""""""""
 " => Man

@@ -45,6 +45,11 @@ set -g fish_prompt_pwd_dir_length 3
 set -gx TERM xterm-256color
 set -gx COLORTERM truecolor
 
+# Enable flashcards
+# brew install coreutils
+fish_add_path $HOME/dotfiles/shell/scripts
+set -gx FLASH_DIR ~/Genesis/org/cards
+
 # colored man output
 # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
 setenv LESS_TERMCAP_mb \e'[01;31m'       # begin blinking
